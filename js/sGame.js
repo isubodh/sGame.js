@@ -7,27 +7,46 @@ setRandomValue();
 
 for( var cnt=1; cnt<=CELLCNT; cnt++) {
     var button = document.createElement("button")
-    button.style.width = '90px'
-    button.style.height = '90px'
     
     button.name = sGameArray[cnt]
     button.id = cnt
-    button.Tag = cnt
+    button.Tag = cnt    
 
     button.innerText = sGameArray[cnt -1];
 
+    if (sGameArray[cnt -1] == 9 ){
+        button.innerText = " "
+    }
 
     button.addEventListener("click",function(){
         userClickd(this.id);
     })
-    document.body.appendChild(button)
+
+    document.getElementById('button-holder').appendChild(button)
 }
 
 //
 function userClickd(id){
-    alert("You Clicked : " + id )
+    alert("You Clicked id : " + id + " Text : " + sGameArray[id-1])
+    if (id == sGameArray[id]) {
+        console.log("Check done")
+        verifyDone();
+    }
 }
 
+// 
+function verifyDone(){
+    
+    var doneFlag = true;
+
+    for (var i =0 ; i < CELLCNT ; i++){
+        if (sGameArray[i] != i ){
+            doneFlag = false ; 
+        }
+    }
+    
+
+}
 
 // Setup the board randomly
 function setRandomValue(){

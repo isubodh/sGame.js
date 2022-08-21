@@ -1,0 +1,26 @@
+p {
+    display: inline;
+}
+
+p + button {
+    width: 90px;
+    height: 90px;
+}
+
+tr {
+    border: 40px;
+    color: black;
+}
+
+button {
+    width: 90px;
+    height: 90px;
+}
+
+#button-holder {
+    display: flex;
+    width: 270px;
+    height: 270px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

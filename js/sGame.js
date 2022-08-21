@@ -2,6 +2,7 @@
 
 const CELLCNT = 9
 const sGameArray = []
+var clickCounterVar = 0
 
 setRandomValue();
 
@@ -27,15 +28,95 @@ for( var cnt=1; cnt<=CELLCNT; cnt++) {
 
 //
 function userClickd(id){
-    alert("You Clicked id : " + id + " Text : " + sGameArray[id-1])
-    if (id == sGameArray[id]) {
-        console.log("Check done")
+    //alert("Clicked id : " + id + " Text : " + sGameArray[id-1] + " Click Count " + clickCounterVar)
+    actionOnButtonClick(id)
+
+}
+
+//
+function actionOnButtonClick(id){
+    clickCounter(1)
+    
+    moveKeysOnClick(id);
+    
+    labelKeys(); 
+
+    if (id == sGameArray[id - 1]) {
         verifyDone();
     }
 }
 
+//
+function moveKeysOnClick(id) {
+    // Left jump if button clicked
+    if (id%3 != 0){
+        var currentLoc = id -1
+        var newLoc = currentLoc + 1;
+        if (sGameArray[newLoc] == 9){
+            sGameArray[newLoc] = sGameArray[currentLoc];
+            sGameArray[currentLoc] = 9;
+            return;
+        }
+    }
+
+    //Right jump
+    if (id%3 != 1){
+        var currentLoc = id - 1
+        var newLoc = currentLoc - 1;
+        if (sGameArray[newLoc] == 9){
+            sGameArray[newLoc] = sGameArray[currentLoc];
+            sGameArray[currentLoc] = 9;
+            return;
+        }
+    }
+
+    //Jump Up
+    if (Math.ceil(id/3) != 1){
+        var currentLoc = id - 1
+        var newLoc = currentLoc - 3;
+        if (sGameArray[newLoc] == 9){
+            sGameArray[newLoc] = sGameArray[currentLoc];
+            sGameArray[currentLoc] = 9;
+            return;
+        }
+    }
+
+    //Jump down
+    if (Math.ceil(id/3) != 3){
+        var currentLoc = id - 1
+        var newLoc = currentLoc + 3;
+        if (sGameArray[newLoc] == 9){
+            sGameArray[newLoc] = sGameArray[currentLoc];
+            sGameArray[currentLoc] = 9;
+            return;
+        }
+    }
+
+}
+// 
+function labelKeys(){
+    for (var i= 1; i <= CELLCNT; i++){
+
+        document.getElementById(i).innerText = sGameArray[i - 1];
+
+        if (sGameArray[i - 1] == 9 ){
+            document.getElementById(i).innerText = " "
+        }
+    }
+    
+}
+
+function clickCounter(number){
+    if (number == 0){
+        clickCounterVar = 0
+    } else {
+        clickCounterVar += number
+    }
+}
 // 
 function verifyDone(){
+
+    console.log("Verifying the soluton");
     
     var doneFlag = true;
 
@@ -45,6 +126,9 @@ function verifyDone(){
         }
     }
     
+    if (doneFlag){
+        alert("Wow, you won in " + clickCounterVar + " clicks")
+    }
 
 }
 

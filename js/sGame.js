@@ -121,7 +121,7 @@ function verifyDone(){
     var doneFlag = true;
 
     for (var i =0 ; i < CELLCNT ; i++){
-        if (sGameArray[i] != i ){
+        if (sGameArray[i] != i + 1 ){
             doneFlag = false ; 
         }
     }

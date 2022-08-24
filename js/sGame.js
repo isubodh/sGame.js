@@ -10,8 +10,7 @@ for( var cnt=1; cnt<=CELLCNT; cnt++) {
     var button = document.createElement("button")
     
     button.name = sGameArray[cnt]
-    button.id = cnt
-    button.Tag = cnt    
+    button.id = cnt    
 
     button.innerText = sGameArray[cnt -1];
 

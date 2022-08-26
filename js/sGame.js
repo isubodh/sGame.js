@@ -2,12 +2,12 @@
 
 const CELLCNT = 9
 const sGameArray = []
-var clickCounterVar = 0
+let clickCounterVar = 0
 
 setRandomValue();
 
-for( var cnt=1; cnt<=CELLCNT; cnt++) {
-    var button = document.createElement("button")
+for( let cnt=1; cnt<=CELLCNT; cnt++) {
+    let button = document.createElement("button")
     
     button.name = sGameArray[cnt]
     button.id = cnt    
@@ -49,8 +49,8 @@ function actionOnButtonClick(id){
 function moveKeysOnClick(id) {
     // Left jump if button clicked
     if (id%3 != 0){
-        var currentLoc = id -1
-        var newLoc = currentLoc + 1;
+        let currentLoc = id -1
+        let newLoc = currentLoc + 1;
         if (sGameArray[newLoc] == 9){
             sGameArray[newLoc] = sGameArray[currentLoc];
             sGameArray[currentLoc] = 9;
@@ -60,8 +60,8 @@ function moveKeysOnClick(id) {
 
     //Right jump
     if (id%3 != 1){
-        var currentLoc = id - 1
-        var newLoc = currentLoc - 1;
+        let currentLoc = id - 1
+        let newLoc = currentLoc - 1;
         if (sGameArray[newLoc] == 9){
             sGameArray[newLoc] = sGameArray[currentLoc];
             sGameArray[currentLoc] = 9;
@@ -71,8 +71,8 @@ function moveKeysOnClick(id) {
 
     //Jump Up
     if (Math.ceil(id/3) != 1){
-        var currentLoc = id - 1
-        var newLoc = currentLoc - 3;
+        let currentLoc = id - 1
+        let newLoc = currentLoc - 3;
         if (sGameArray[newLoc] == 9){
             sGameArray[newLoc] = sGameArray[currentLoc];
             sGameArray[currentLoc] = 9;
@@ -82,8 +82,8 @@ function moveKeysOnClick(id) {
 
     //Jump down
     if (Math.ceil(id/3) != 3){
-        var currentLoc = id - 1
-        var newLoc = currentLoc + 3;
+        let currentLoc = id - 1
+        let newLoc = currentLoc + 3;
         if (sGameArray[newLoc] == 9){
             sGameArray[newLoc] = sGameArray[currentLoc];
             sGameArray[currentLoc] = 9;
@@ -94,7 +94,7 @@ function moveKeysOnClick(id) {
 }
 // 
 function labelKeys(){
-    for (var i= 1; i <= CELLCNT; i++){
+    for (let i= 1; i <= CELLCNT; i++){
 
         document.getElementById(i).innerText = sGameArray[i - 1];
 
@@ -117,9 +117,9 @@ function verifyDone(){
 
     console.log("Verifying the soluton");
     
-    var doneFlag = true;
+    let doneFlag = true;
 
-    for (var i =0 ; i < CELLCNT ; i++){
+    for (let i =0 ; i < CELLCNT ; i++){
         if (sGameArray[i] != i + 1 ){
             doneFlag = false ; 
         }
@@ -135,12 +135,12 @@ function verifyDone(){
 function setRandomValue(){
     console.log("In Random random");
     // Set know invalid value
-    for(var i = 0; i < CELLCNT ; i++){
+    for(let i = 0; i < CELLCNT ; i++){
         sGameArray[i] = -1;
     }
     
     //Set random val
-    for(var i = 1; i <= CELLCNT; i++){
+    for(let i = 1; i <= CELLCNT; i++){
 
         newRandomPlace = getRandomInt(0,8);
         

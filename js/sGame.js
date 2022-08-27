@@ -6,24 +6,33 @@ let clickCounterVar = 0
 
 setRandomValue();
 
-for( let cnt=1; cnt<=CELLCNT; cnt++) {
-    let button = document.createElement("button")
+main()
+
+function main(){
+
+    for( let cnt=1; cnt<=CELLCNT; cnt++) {
+        let button = document.createElement("button")
+        
+        button.name = sGameArray[cnt]
+        button.id = cnt    
     
-    button.name = sGameArray[cnt]
-    button.id = cnt    
-
-    button.innerText = sGameArray[cnt -1];
-
-    if (sGameArray[cnt -1] == 9 ){
-        button.innerText = " "
+        button.innerText = sGameArray[cnt -1];
+    
+        if (sGameArray[cnt -1] == 9 ){
+            button.innerText = " "
+        }
+    
+        button.addEventListener("click",function(){
+            userClickd(this.id);
+        })
+    
+        document.getElementById('button-holder').appendChild(button)
     }
 
-    button.addEventListener("click",function(){
-        userClickd(this.id);
-    })
-
-    document.getElementById('button-holder').appendChild(button)
+    document.getElementById('click-counter').innerText = "Clicks "
+    
 }
+
 
 //
 function userClickd(id){
@@ -111,6 +120,8 @@ function clickCounter(number){
     } else {
         clickCounterVar += number
     }
+
+    document.getElementById('click-counter').innerText = "Clicks : " + clickCounterVar
 }
 // 
 function verifyDone(){

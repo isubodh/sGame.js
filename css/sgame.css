@@ -24,3 +24,11 @@ button {
     flex-wrap: wrap;
     justify-content: space-between;
 }
+
+#stats-counter {
+    display: flex;
+    width: 270px;
+    height: 270px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

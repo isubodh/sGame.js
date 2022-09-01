@@ -29,7 +29,7 @@ function main(){
         document.getElementById('button-holder').appendChild(button)
     }
 
-    document.getElementById('click-counter').innerText = "Clicks "
+    clickCounter(0)
     
 }
 
@@ -121,7 +121,7 @@ function clickCounter(number){
         clickCounterVar += number
     }
 
-    document.getElementById('click-counter').innerText = "Clicks : " + clickCounterVar
+    document.getElementById('stats-counter').innerText = "Clicks : " + clickCounterVar
 }
 // 
 function verifyDone(){

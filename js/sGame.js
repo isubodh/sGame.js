@@ -57,49 +57,28 @@ function actionOnButtonClick(id){
 //
 function moveKeysOnClick(id) {
     // Left jump if button clicked
-    if (id%3 != 0){
-        let currentLoc = id -1
-        let newLoc = currentLoc + 1;
-        if (sGameArray[newLoc] == 9){
-            sGameArray[newLoc] = sGameArray[currentLoc];
-            sGameArray[currentLoc] = 9;
-            return;
-        }
-    }
+    if (id%3 != 0){ makeMoves(id, 1) }
 
     //Right jump
-    if (id%3 != 1){
-        let currentLoc = id - 1
-        let newLoc = currentLoc - 1;
-        if (sGameArray[newLoc] == 9){
-            sGameArray[newLoc] = sGameArray[currentLoc];
-            sGameArray[currentLoc] = 9;
-            return;
-        }
-    }
+    if (id%3 != 1){ makeMoves(id, -1) }
 
     //Jump Up
-    if (Math.ceil(id/3) != 1){
-        let currentLoc = id - 1
-        let newLoc = currentLoc - 3;
-        if (sGameArray[newLoc] == 9){
-            sGameArray[newLoc] = sGameArray[currentLoc];
-            sGameArray[currentLoc] = 9;
-            return;
-        }
-    }
+    if (Math.ceil(id/3) != 1){ makeMoves(id, -3) }
 
     //Jump down
-    if (Math.ceil(id/3) != 3){
-        let currentLoc = id - 1
-        let newLoc = currentLoc + 3;
+    if (Math.ceil(id/3) != 3){ makeMoves(id, 3) }
+}
+
+
+//
+function makeMoves(id, steps){
+    let currentLoc = id - 1
+        let newLoc = currentLoc + steps;
         if (sGameArray[newLoc] == 9){
             sGameArray[newLoc] = sGameArray[currentLoc];
             sGameArray[currentLoc] = 9;
             return;
         }
-    }
-
 }
 // 
 function labelKeys(){
@@ -137,7 +116,9 @@ function verifyDone(){
     }
     
     if (doneFlag){
-        alert("Wow, you won in " + clickCounterVar + " clicks")
+        alert("Wow, you won in " + clickCounterVar + " clicks. \nGame will reset now.")
+        clickCounter(0);
+        setRandomValue();
     }
 
 }

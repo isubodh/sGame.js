@@ -23,12 +23,14 @@ button {
     height: 270px;
     flex-wrap: wrap;
     justify-content: space-between;
+    color: bisque;
 }
 
 #stats-counter {
     display: flex;
     width: 270px;
-    height: 270px;
+    height: 90px;
     flex-wrap: wrap;
     justify-content: space-between;
+    color:brown;
 }

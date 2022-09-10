@@ -102,7 +102,7 @@ function clickCounter(number){
 
     document.getElementById('stats-counter').innerText = "Clicks : " + clickCounterVar
 }
-// 
+// Is the game over
 function verifyDone(){
 
     console.log("Verifying the soluton");
@@ -152,7 +152,7 @@ function setRandomValue(){
     console.log(sGameArray)
 }
 
-// random number within range
+// random number within range min to max
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
